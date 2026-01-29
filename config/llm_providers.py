@@ -49,27 +49,37 @@ PROVIDERS_CONFIG = {
     },
     "huggingface_novita": {
         "name": "HuggingFace (Novita)",
-        "base_url": "https://api.novita.ai/v3/openai",
+        "base_url": "https://router.huggingface.co/v1",
         "models": [
             {
-                "id": "meta-llama/llama-3.1-70b-instruct",
+                "id": "meta-llama/Llama-3.1-70B-Instruct:novita",
                 "name": "Llama 3.1 70B Instruct",
                 "context_window": 131072,
             },
             {
-                "id": "meta-llama/llama-3.1-8b-instruct",
+                "id": "meta-llama/Llama-3.1-8B-Instruct:novita",
                 "name": "Llama 3.1 8B Instruct",
                 "context_window": 131072,
             },
             {
-                "id": "mistralai/mixtral-8x22b-instruct",
+                "id": "mistralai/Mixtral-8x22B-Instruct-v0.1:novita",
                 "name": "Mixtral 8x22B Instruct",
                 "context_window": 65536,
             },
             {
-                "id": "mistralai/mistral-7b-instruct",
+                "id": "mistralai/Mistral-7B-Instruct-v0.3:novita",
                 "name": "Mistral 7B Instruct",
                 "context_window": 32768,
+            },
+            {
+                "id": "Qwen/Qwen2.5-72B-Instruct:novita",
+                "name": "Qwen 2.5 72B Instruct",
+                "context_window": 131072,
+            },
+            {
+                "id": "deepseek-ai/DeepSeek-R1:novita",
+                "name": "DeepSeek R1",
+                "context_window": 65536,
             },
         ],
     },
@@ -150,9 +160,12 @@ class LLMProviderFactory:
             kwargs.setdefault("default_headers", default_headers)
 
         elif provider == "huggingface_novita":
-            api_key = settings.novita_api_key or settings.huggingface_token
+            # HuggingFace router uses HF_TOKEN for authentication
+            # Requests are routed to Novita via HuggingFace infrastructure
+            # See: https://huggingface.co/docs/inference-providers/providers/novita
+            api_key = settings.huggingface_token
             if not api_key:
-                raise ValueError("NOVITA_API_KEY or HUGGINGFACE_TOKEN not set in environment")
+                raise ValueError("HUGGINGFACE_TOKEN not set in environment (required for HuggingFace router)")
         else:
             raise ValueError(f"Unknown provider: {provider}")
 

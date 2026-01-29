@@ -22,8 +22,10 @@ class Settings(BaseSettings):
     # LLM Providers
     # ==========================================================================
     openrouter_api_key: str = Field(default="", description="OpenRouter API Key")
-    huggingface_token: str = Field(default="", description="HuggingFace Token")
-    novita_api_key: str = Field(default="", description="Novita API Key")
+    huggingface_token: str = Field(
+        default="",
+        description="HuggingFace Token (for Novita via router.huggingface.co)",
+    )
 
     # ==========================================================================
     # Default Model Settings
@@ -119,6 +121,11 @@ class Settings(BaseSettings):
     def data_path(self) -> Path:
         """Get data directory path."""
         return self.project_root / "data"
+
+    @property
+    def data_dir(self) -> Path:
+        """Alias for data_path (used by tools)."""
+        return self.data_path
 
 
 @lru_cache
