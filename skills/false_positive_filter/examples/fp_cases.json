@@ -1,0 +1,70 @@
+{
+  "examples": [
+    {
+      "case_id": "FP-001",
+      "alert_id": "ALT-2850",
+      "alert_type": "STRUCTURING",
+      "evaluation": {
+        "fp_probability": 0.85,
+        "classification": "LIKELY_FP",
+        "rules_triggered": ["FP-RULE-001", "FP-RULE-004"],
+        "reasons": [
+          "Cliente opera restaurante (CNAE 5610)",
+          "Tenure de 7 años sin alertas previas",
+          "Patrón de depósitos consistente con caja diaria"
+        ]
+      },
+      "similar_historical": {
+        "total_similar": 23,
+        "closed_fp": 19,
+        "closed_sar": 1,
+        "open": 3
+      },
+      "recommendation": "Revisión rápida recomendada. Verificar última declaración de ventas.",
+      "actual_outcome": "CLOSED_FP",
+      "analyst_notes": "Documentación de caja consistente con depósitos. FP confirmado."
+    },
+    {
+      "case_id": "FP-002",
+      "alert_id": "ALT-2851",
+      "alert_type": "VELOCITY",
+      "evaluation": {
+        "fp_probability": 0.72,
+        "classification": "POSSIBLE_FP",
+        "rules_triggered": ["FP-RULE-002"],
+        "reasons": [
+          "Evento vital: venta de vehículo registrada hace 45 días",
+          "Incremento de ingresos consistente con precio de venta"
+        ]
+      },
+      "caveats": [
+        "Verificar documentación de venta",
+        "Confirmar destino de fondos posterior"
+      ],
+      "actual_outcome": "CLOSED_FP",
+      "analyst_notes": "Contrato de compraventa verificado. Fondos destinados a entrada de vivienda."
+    },
+    {
+      "case_id": "FP-003",
+      "alert_id": "ALT-2852",
+      "alert_type": "GEOGRAPHIC",
+      "evaluation": {
+        "fp_probability": 0.45,
+        "classification": "UNCERTAIN",
+        "rules_triggered": [],
+        "reasons": [
+          "Transferencia a Marruecos - país de atención",
+          "Sin historial previo de operaciones con MAR",
+          "Monto significativo (8,500 EUR)"
+        ]
+      },
+      "flags": [
+        "Nuevo país no declarado en perfil",
+        "Sin reglas FP aplicables"
+      ],
+      "recommendation": "Requiere investigación estándar. No parece FP evidente.",
+      "actual_outcome": "CLOSED_NO_ACTION",
+      "analyst_notes": "Cliente tiene familia en Marruecos (no declarado). Actualizó perfil. Remesa legítima."
+    }
+  ]
+}

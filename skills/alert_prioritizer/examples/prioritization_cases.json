@@ -1,0 +1,228 @@
+{
+  "examples": [
+    {
+      "case_id": "PRIO-001",
+      "description": "Alerta de sanciones con monto alto",
+      "input": {
+        "alert": {
+          "alert_id": "ALT-2847",
+          "alert_type": "SANCTIONS",
+          "alert_subtype": "POTENTIAL_MATCH",
+          "total_amount": 85000,
+          "currency": "EUR",
+          "transaction_count": 1,
+          "created_at": "2025-01-29T08:30:00Z"
+        },
+        "customer": {
+          "customer_id": "C-4821",
+          "risk_category": "HIGH",
+          "is_pep": false,
+          "tenure_years": 2.5,
+          "previous_alerts": 1
+        }
+      },
+      "calculation": {
+        "base_score": 95,
+        "modifiers": [
+          {"factor": "Cliente HIGH risk", "adjustment": 15},
+          {"factor": "Alerta previa", "adjustment": 10}
+        ],
+        "raw_total": 120,
+        "final_score": 100,
+        "note": "Capped at 100"
+      },
+      "output": {
+        "priority_score": 100,
+        "priority_tier": "CRITICAL",
+        "sla_hours": 4,
+        "recommended_level": "L3",
+        "key_factors": [
+          "SANCTIONS match - verificación inmediata requerida",
+          "Monto > 50K EUR",
+          "Cliente categoría HIGH"
+        ],
+        "suggested_action": "Verificar match de sanciones inmediatamente. Si confirmado, proceder a bloqueo y comunicación SEPBLAC."
+      }
+    },
+    {
+      "case_id": "PRIO-002",
+      "description": "Structuring típico - monto moderado",
+      "input": {
+        "alert": {
+          "alert_id": "ALT-2848",
+          "alert_type": "STRUCTURING",
+          "alert_subtype": "CASH_STRUCTURING",
+          "total_amount": 8500,
+          "currency": "EUR",
+          "transaction_count": 4,
+          "created_at": "2025-01-29T09:15:00Z"
+        },
+        "customer": {
+          "customer_id": "C-1234",
+          "risk_category": "MEDIUM",
+          "is_pep": false,
+          "tenure_years": 5.2,
+          "previous_alerts": 0
+        }
+      },
+      "calculation": {
+        "base_score": 40,
+        "modifiers": [
+          {"factor": "CASH_STRUCTURING subtipo", "adjustment": 10},
+          {"factor": "Cliente > 5 años", "adjustment": -5},
+          {"factor": "Primera alerta", "adjustment": -5}
+        ],
+        "raw_total": 40,
+        "final_score": 40
+      },
+      "output": {
+        "priority_score": 40,
+        "priority_tier": "MEDIUM",
+        "sla_hours": 72,
+        "recommended_level": "L1",
+        "key_factors": [
+          "Patrón de structuring detectado",
+          "4 depósitos en efectivo < 3K cada uno",
+          "Cliente con buen historial"
+        ],
+        "suggested_action": "Revisar patrón de depósitos. Verificar si hay justificación económica (negocio cash-intensive, etc)."
+      }
+    },
+    {
+      "case_id": "PRIO-003",
+      "description": "PEP con transacción internacional",
+      "input": {
+        "alert": {
+          "alert_id": "ALT-2849",
+          "alert_type": "PEP",
+          "alert_subtype": "PEP_INTERNATIONAL",
+          "total_amount": 45000,
+          "currency": "EUR",
+          "transaction_count": 1,
+          "created_at": "2025-01-29T10:00:00Z",
+          "destination_country": "CHE"
+        },
+        "customer": {
+          "customer_id": "C-0099",
+          "risk_category": "HIGH",
+          "is_pep": true,
+          "pep_category": "NATIONAL",
+          "pep_position": "Concejal de Urbanismo",
+          "tenure_years": 1.2,
+          "previous_alerts": 2
+        }
+      },
+      "calculation": {
+        "base_score": 65,
+        "modifiers": [
+          {"factor": "Cliente HIGH risk", "adjustment": 15},
+          {"factor": "PEP confirmado", "adjustment": 10},
+          {"factor": "Alertas previas (2)", "adjustment": 10},
+          {"factor": "Destino Suiza", "adjustment": 5}
+        ],
+        "raw_total": 105,
+        "final_score": 100
+      },
+      "output": {
+        "priority_score": 100,
+        "priority_tier": "CRITICAL",
+        "sla_hours": 4,
+        "recommended_level": "L2",
+        "key_factors": [
+          "PEP Nacional - cargo público",
+          "Transferencia a Suiza 45K EUR",
+          "2 alertas previas en el último año"
+        ],
+        "suggested_action": "Aplicar EDD. Solicitar justificación de transferencia. Verificar origen de fondos. Considerar comunicación preventiva."
+      }
+    },
+    {
+      "case_id": "PRIO-004",
+      "description": "Velocity en cuenta dormant",
+      "input": {
+        "alert": {
+          "alert_id": "ALT-2850",
+          "alert_type": "VELOCITY",
+          "alert_subtype": "DORMANT_REACTIVATION",
+          "total_amount": 12000,
+          "currency": "EUR",
+          "transaction_count": 8,
+          "created_at": "2025-01-29T11:30:00Z",
+          "dormancy_days": 245
+        },
+        "customer": {
+          "customer_id": "C-5678",
+          "risk_category": "LOW",
+          "is_pep": false,
+          "tenure_years": 7.0,
+          "previous_alerts": 0
+        }
+      },
+      "calculation": {
+        "base_score": 50,
+        "modifiers": [
+          {"factor": "DORMANT_REACTIVATION", "adjustment": 15},
+          {"factor": "Cliente > 5 años", "adjustment": -5},
+          {"factor": "Primera alerta", "adjustment": -5},
+          {"factor": "> 5 transacciones", "adjustment": 10}
+        ],
+        "raw_total": 65,
+        "final_score": 65
+      },
+      "output": {
+        "priority_score": 65,
+        "priority_tier": "HIGH",
+        "sla_hours": 24,
+        "recommended_level": "L1",
+        "key_factors": [
+          "Cuenta inactiva 8 meses reactivada",
+          "8 transacciones en 48 horas",
+          "Monto acumulado 12K EUR"
+        ],
+        "suggested_action": "Contactar al cliente para verificar actividad. Posible cuenta comprometida o cambio de circunstancias vitales."
+      }
+    },
+    {
+      "case_id": "PRIO-005",
+      "description": "Multiple alertas del mismo cliente - consolidación",
+      "input": {
+        "alerts": [
+          {
+            "alert_id": "ALT-2851",
+            "alert_type": "UNUSUAL_ACTIVITY",
+            "total_amount": 5000
+          },
+          {
+            "alert_id": "ALT-2852",
+            "alert_type": "GEOGRAPHIC",
+            "total_amount": 3000,
+            "destination_country": "MAR"
+          },
+          {
+            "alert_id": "ALT-2853",
+            "alert_type": "VELOCITY",
+            "total_amount": 8000
+          }
+        ],
+        "customer": {
+          "customer_id": "C-9999",
+          "risk_category": "MEDIUM",
+          "tenure_years": 3.0
+        }
+      },
+      "calculation": {
+        "individual_scores": [35, 50, 45],
+        "consolidation_bonus": 15,
+        "combined_amount": 16000,
+        "final_score": 65
+      },
+      "output": {
+        "recommendation": "CONSOLIDATE",
+        "combined_priority_score": 65,
+        "priority_tier": "HIGH",
+        "message": "3 alertas del mismo cliente en 72h. Consolidar en caso único.",
+        "suggested_action": "Asignar a un solo analista L2 para investigación holística del cliente."
+      }
+    }
+  ]
+}

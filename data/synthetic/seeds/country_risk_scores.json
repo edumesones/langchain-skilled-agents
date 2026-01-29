@@ -1,0 +1,97 @@
+{
+  "risk_classifications": {
+    "low_risk": {
+      "description": "Countries with robust AML/CFT frameworks and low corruption",
+      "countries": [
+        {"code": "ESP", "name": "Spain", "score": 15},
+        {"code": "FRA", "name": "France", "score": 18},
+        {"code": "DEU", "name": "Germany", "score": 12},
+        {"code": "ITA", "name": "Italy", "score": 22},
+        {"code": "PRT", "name": "Portugal", "score": 20},
+        {"code": "NLD", "name": "Netherlands", "score": 10},
+        {"code": "BEL", "name": "Belgium", "score": 18},
+        {"code": "AUT", "name": "Austria", "score": 14},
+        {"code": "CHE", "name": "Switzerland", "score": 16},
+        {"code": "GBR", "name": "United Kingdom", "score": 15},
+        {"code": "IRL", "name": "Ireland", "score": 17},
+        {"code": "DNK", "name": "Denmark", "score": 8},
+        {"code": "SWE", "name": "Sweden", "score": 9},
+        {"code": "NOR", "name": "Norway", "score": 7},
+        {"code": "FIN", "name": "Finland", "score": 6},
+        {"code": "LUX", "name": "Luxembourg", "score": 19},
+        {"code": "JPN", "name": "Japan", "score": 12},
+        {"code": "AUS", "name": "Australia", "score": 11},
+        {"code": "NZL", "name": "New Zealand", "score": 8},
+        {"code": "CAN", "name": "Canada", "score": 13},
+        {"code": "SGP", "name": "Singapore", "score": 10}
+      ]
+    },
+    "medium_risk": {
+      "description": "Countries with adequate AML frameworks but elevated risks",
+      "countries": [
+        {"code": "USA", "name": "United States", "score": 28},
+        {"code": "MEX", "name": "Mexico", "score": 45},
+        {"code": "BRA", "name": "Brazil", "score": 42},
+        {"code": "ARG", "name": "Argentina", "score": 48},
+        {"code": "COL", "name": "Colombia", "score": 50},
+        {"code": "CHL", "name": "Chile", "score": 35},
+        {"code": "PER", "name": "Peru", "score": 47},
+        {"code": "MAR", "name": "Morocco", "score": 52},
+        {"code": "TUR", "name": "Turkey", "score": 55},
+        {"code": "CHN", "name": "China", "score": 48},
+        {"code": "IND", "name": "India", "score": 45},
+        {"code": "THA", "name": "Thailand", "score": 50},
+        {"code": "PHL", "name": "Philippines", "score": 52},
+        {"code": "IDN", "name": "Indonesia", "score": 48},
+        {"code": "VNM", "name": "Vietnam", "score": 50},
+        {"code": "ZAF", "name": "South Africa", "score": 55},
+        {"code": "EGY", "name": "Egypt", "score": 58},
+        {"code": "SAU", "name": "Saudi Arabia", "score": 45},
+        {"code": "ARE", "name": "United Arab Emirates", "score": 40},
+        {"code": "QAT", "name": "Qatar", "score": 38}
+      ]
+    },
+    "high_risk": {
+      "description": "Countries with significant AML deficiencies or under sanctions",
+      "countries": [
+        {"code": "RUS", "name": "Russia", "score": 85},
+        {"code": "IRN", "name": "Iran", "score": 95},
+        {"code": "PRK", "name": "North Korea", "score": 100},
+        {"code": "SYR", "name": "Syria", "score": 95},
+        {"code": "VEN", "name": "Venezuela", "score": 82},
+        {"code": "MMR", "name": "Myanmar", "score": 88},
+        {"code": "AFG", "name": "Afghanistan", "score": 92},
+        {"code": "YEM", "name": "Yemen", "score": 90},
+        {"code": "LBY", "name": "Libya", "score": 85},
+        {"code": "SDN", "name": "Sudan", "score": 88},
+        {"code": "SSD", "name": "South Sudan", "score": 90},
+        {"code": "SOM", "name": "Somalia", "score": 92},
+        {"code": "ERI", "name": "Eritrea", "score": 85},
+        {"code": "CUB", "name": "Cuba", "score": 78},
+        {"code": "BLR", "name": "Belarus", "score": 80},
+        {"code": "NIC", "name": "Nicaragua", "score": 72},
+        {"code": "ZWE", "name": "Zimbabwe", "score": 75},
+        {"code": "CAF", "name": "Central African Republic", "score": 88},
+        {"code": "COD", "name": "Democratic Republic of Congo", "score": 85},
+        {"code": "HTI", "name": "Haiti", "score": 80}
+      ]
+    }
+  },
+  "fatf_grey_list": [
+    "BRB", "BFA", "CMR", "COD", "GIB", "HTI", "JAM", "MLI",
+    "MOZ", "MMR", "NGA", "PAN", "PHL", "SEN", "ZAF", "SSD",
+    "SYR", "TZA", "TUR", "UGA", "ARE", "VNM", "YEM"
+  ],
+  "fatf_black_list": [
+    "IRN", "PRK", "MMR"
+  ],
+  "eu_high_risk_third_countries": [
+    "AFG", "BRB", "BFA", "KHM", "KYM", "COD", "GIB", "HTI",
+    "JAM", "JOR", "MLI", "MAR", "MOZ", "MMR", "NGA", "PAN",
+    "PHL", "SEN", "ZAF", "SSD", "SYR", "TZA", "TTO", "UGA",
+    "ARE", "VUT", "VNM", "YEM"
+  ],
+  "ofac_sanctioned": [
+    "CUB", "IRN", "PRK", "RUS", "SYR", "VEN"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "examples": [
+    {
+      "case_id": "REP-001",
+      "type": "SAR_STRUCTURING",
+      "summary": {
+        "subject": "Juan García López",
+        "typology": "STRUCTURING - Cash deposits",
+        "period": "2024-10-01 to 2024-12-31",
+        "total_amount": 87500,
+        "transaction_count": 35
+      },
+      "narrative_excerpt": "El sujeto realizó 35 depósitos en efectivo durante un período de 3 meses, con importes consistentemente entre 2,400 y 2,900 EUR, justo por debajo del umbral de identificación reforzada de 3,000 EUR. El patrón muestra una clara intención de evitar controles, con depósitos realizados en diferentes sucursales de la zona metropolitana de Madrid. El total acumulado de 87,500 EUR es inconsistente con los ingresos declarados de 2,200 EUR mensuales como empleado del sector servicios.",
+      "indicators": [
+        "35 depósitos < 3,000 EUR en 90 días",
+        "Uso de 8 sucursales diferentes",
+        "Ingresos declarados insuficientes",
+        "Sin justificación económica"
+      ],
+      "recommendation": "Comunicar al SEPBLAC - Patrón claro de structuring"
+    },
+    {
+      "case_id": "REP-002",
+      "type": "SAR_PEP_INTERNATIONAL",
+      "summary": {
+        "subject": "Roberto Fernández Ruiz",
+        "typology": "PEP - High value international",
+        "period": "2024-11-15 to 2024-12-20",
+        "total_amount": 180000,
+        "transaction_count": 3
+      },
+      "narrative_excerpt": "El sujeto, identificado como Persona Políticamente Expuesta (Concejal de Urbanismo), realizó tres transferencias internacionales a Suiza por un total de 180,000 EUR en un período de 35 días. Las transferencias se realizaron a una cuenta en UBS a nombre de una sociedad suiza (Helvetia Consulting AG) de la cual no se tiene información sobre titularidad real. El cliente no proporcionó documentación satisfactoria sobre el propósito de las transferencias cuando se le solicitó, alegando 'inversiones personales' sin mayor detalle.",
+      "indicators": [
+        "PEP Nacional activo",
+        "Transferencias a Suiza 180K EUR",
+        "Beneficiario: sociedad opaca",
+        "Sin documentación de soporte"
+      ],
+      "recommendation": "Comunicar al SEPBLAC - PEP con operativa internacional injustificada"
+    }
+  ]
+}

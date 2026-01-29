@@ -1,0 +1,95 @@
+{
+  "examples": [
+    {
+      "case_id": "NET-001",
+      "description": "Red de smurfing detectada",
+      "pattern": "HUB_SPOKE",
+      "analysis": {
+        "hub_node": {
+          "id": "C-4821",
+          "name": "Comercial XYZ S.L.",
+          "type": "COMPANY",
+          "total_inbound": 145000,
+          "unique_sources": 8
+        },
+        "spoke_nodes": [
+          {"id": "C-001", "amount_sent": 18000, "tx_count": 7},
+          {"id": "C-002", "amount_sent": 19500, "tx_count": 8},
+          {"id": "C-003", "amount_sent": 17000, "tx_count": 6},
+          {"id": "C-004", "amount_sent": 18500, "tx_count": 7},
+          {"id": "C-005", "amount_sent": 19000, "tx_count": 8},
+          {"id": "C-006", "amount_sent": 17500, "tx_count": 7},
+          {"id": "C-007", "amount_sent": 18000, "tx_count": 7},
+          {"id": "C-008", "amount_sent": 17500, "tx_count": 6}
+        ]
+      },
+      "suspicion_indicators": [
+        "8 fuentes sin relación aparente",
+        "Montos similares (~18K cada uno)",
+        "Fragmentación evidente (evitar umbral 10K)",
+        "Todas las transferencias en período de 15 días",
+        "Destino posterior a cuenta en Panamá"
+      ],
+      "suspicion_score": 85,
+      "recommendation": "SAR - Patrón claro de smurfing con posterior transferencia offshore"
+    },
+    {
+      "case_id": "NET-002",
+      "description": "Transacciones circulares entre empresas relacionadas",
+      "pattern": "CIRCULAR",
+      "analysis": {
+        "cycle": [
+          {"from": "EMP-A", "to": "EMP-B", "amount": 50000, "concept": "Servicios consultoría"},
+          {"from": "EMP-B", "to": "EMP-C", "amount": 48500, "concept": "Comisión intermediación"},
+          {"from": "EMP-C", "to": "EMP-A", "amount": 47000, "concept": "Préstamo intragrupo"}
+        ],
+        "cycle_duration_days": 12,
+        "retained_amount": 3000,
+        "common_factors": [
+          "Mismo administrador en las 3 empresas",
+          "Misma dirección fiscal",
+          "Constituidas en los últimos 18 meses"
+        ]
+      },
+      "suspicion_indicators": [
+        "Ciclo completo en 12 días",
+        "Conceptos vagos sin soporte documental",
+        "Empresas recién constituidas",
+        "Administrador único",
+        "Solo retienen ~6% del flujo"
+      ],
+      "suspicion_score": 78,
+      "recommendation": "Investigación profunda de grupo empresarial. Solicitar documentación de servicios. Posible trade-based laundering."
+    },
+    {
+      "case_id": "NET-003",
+      "description": "Clique de transferencias cruzadas",
+      "pattern": "CLIQUE",
+      "analysis": {
+        "members": ["C-100", "C-101", "C-102", "C-103"],
+        "connections": [
+          {"pair": ["C-100", "C-101"], "bidirectional_amount": 25000},
+          {"pair": ["C-100", "C-102"], "bidirectional_amount": 22000},
+          {"pair": ["C-100", "C-103"], "bidirectional_amount": 28000},
+          {"pair": ["C-101", "C-102"], "bidirectional_amount": 24000},
+          {"pair": ["C-101", "C-103"], "bidirectional_amount": 26000},
+          {"pair": ["C-102", "C-103"], "bidirectional_amount": 23000}
+        ],
+        "common_factors": [
+          "Todos residentes en misma ciudad",
+          "Sector: Hostelería",
+          "Cuentas abiertas en período similar"
+        ]
+      },
+      "suspicion_indicators": [
+        "Todos conectados con todos",
+        "Flujos bidireccionales (poco común)",
+        "Montos sospechosamente similares",
+        "Sin propósito económico claro",
+        "Posible grupo organizado"
+      ],
+      "suspicion_score": 72,
+      "recommendation": "Investigar como posible red organizada. Verificar si hay relación familiar/empresarial no declarada. Solicitar justificación de transferencias."
+    }
+  ]
+}

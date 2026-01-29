@@ -1,0 +1,47 @@
+{
+  "male_first_names": [
+    "Alejandro", "Antonio", "Carlos", "Daniel", "David", "Diego", "Eduardo",
+    "Fernando", "Francisco", "Gabriel", "Hugo", "Javier", "Jorge", "José",
+    "Juan", "Luis", "Manuel", "Mario", "Miguel", "Pablo", "Pedro", "Rafael",
+    "Roberto", "Sergio", "Víctor", "Alberto", "Álvaro", "Andrés", "Ángel",
+    "Arturo", "Bruno", "César", "Cristian", "Emilio", "Enrique", "Felipe",
+    "Gonzalo", "Guillermo", "Héctor", "Ignacio", "Iván", "Jaime", "Joaquín",
+    "Lorenzo", "Lucas", "Marcos", "Martín", "Mateo", "Nicolás", "Óscar",
+    "Raúl", "Ricardo", "Rubén", "Salvador", "Santiago", "Tomás", "Adrián",
+    "Agustín", "Alonso", "Benito", "Bernardo", "Claudio", "Domingo", "Ernesto",
+    "Esteban", "Fabián", "Federico", "Gerardo", "Gustavo", "Ismael", "Jesús",
+    "Julián", "Leandro", "Leonardo", "Mariano", "Mauricio", "Maximiliano",
+    "Néstor", "Orlando", "Patricio", "Ramón", "Renato", "Rodolfo", "Rodrigo",
+    "Rogelio", "Rubén", "Samuel", "Sebastián", "Simón", "Teodoro", "Valentín",
+    "Vicente", "Xavier"
+  ],
+  "female_first_names": [
+    "Ana", "Andrea", "Carmen", "Cristina", "Elena", "Isabel", "Laura",
+    "Lucía", "María", "Marta", "Paula", "Rosa", "Sara", "Sofía", "Victoria",
+    "Adriana", "Alejandra", "Alicia", "Amparo", "Aurora", "Beatriz", "Blanca",
+    "Carlota", "Carolina", "Catalina", "Cecilia", "Clara", "Claudia", "Daniela",
+    "Diana", "Dolores", "Elisa", "Emilia", "Esperanza", "Esther", "Eva",
+    "Francisca", "Gabriela", "Gloria", "Graciela", "Guadalupe", "Inés", "Irene",
+    "Josefa", "Juana", "Julia", "Lourdes", "Luisa", "Luz", "Magdalena",
+    "Manuela", "Margarita", "Marina", "Mercedes", "Miriam", "Mónica", "Natalia",
+    "Nerea", "Nuria", "Olga", "Patricia", "Pilar", "Raquel", "Rebeca",
+    "Regina", "Rocío", "Sandra", "Silvia", "Sonia", "Susana", "Teresa",
+    "Valeria", "Vanessa", "Verónica", "Yolanda"
+  ],
+  "last_names": [
+    "García", "Rodríguez", "Martínez", "López", "González", "Hernández",
+    "Pérez", "Sánchez", "Ramírez", "Torres", "Flores", "Rivera", "Gómez",
+    "Díaz", "Reyes", "Morales", "Jiménez", "Ruiz", "Álvarez", "Romero",
+    "Fernández", "Moreno", "Muñoz", "Alonso", "Gutiérrez", "Navarro", "Domínguez",
+    "Vázquez", "Ramos", "Gil", "Serrano", "Blanco", "Molina", "Castro",
+    "Ortiz", "Rubio", "Marín", "Sanz", "Iglesias", "Nuñez", "Medina",
+    "Garrido", "Cortés", "Castillo", "Santos", "Guerrero", "Lozano", "Cano",
+    "Prieto", "Méndez", "Cruz", "Calvo", "Gallego", "Vidal", "León",
+    "Herrera", "Márquez", "Peña", "Cabrera", "Caballero", "Delgado", "Parra",
+    "Aguilar", "Vargas", "Campos", "Carrasco", "Pascual", "Fuentes", "Herrero",
+    "Nieto", "Montero", "Lorenzo", "Hidalgo", "Giménez", "Ibáñez", "Ferrer",
+    "Durán", "Vicente", "Benítez", "Mora", "Santiago", "Arias", "Carmona",
+    "Crespo", "Esteban", "Soler", "Moya", "Bravo", "Rojas", "Salas",
+    "Suárez", "Velasco", "Santana", "Vera", "Pastor", "Roca", "Redondo"
+  ]
+}

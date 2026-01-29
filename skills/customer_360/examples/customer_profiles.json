@@ -1,0 +1,183 @@
+{
+  "examples": [
+    {
+      "case_id": "C360-001",
+      "description": "Cliente estándar bajo riesgo",
+      "customer_id": "C-1234",
+      "profile": {
+        "identity": {
+          "full_name": "Ana Martínez García",
+          "age": 35,
+          "nationality": "ESP",
+          "customer_since": "2019-05-10",
+          "tenure_years": 5.7
+        },
+        "kyc_status": {
+          "verification_level": "FULL",
+          "pep_status": "NOT_PEP",
+          "sanctions_status": "CLEAR"
+        },
+        "risk_profile": {
+          "current_score": 22,
+          "category": "LOW",
+          "factors": []
+        },
+        "behavioral_metrics": {
+          "comparison": {
+            "monthly_income": {"expected": 2800, "actual": 2800, "deviation_pct": 0},
+            "monthly_expenses": {"expected": 2000, "actual": 1950, "deviation_pct": -2.5}
+          },
+          "anomalies_detected": []
+        }
+      },
+      "interpretation": "Cliente de bajo riesgo con comportamiento consistente. No requiere atención especial."
+    },
+    {
+      "case_id": "C360-002",
+      "description": "PEP con operativa internacional",
+      "customer_id": "C-0099",
+      "profile": {
+        "identity": {
+          "full_name": "Roberto Fernández Ruiz",
+          "age": 52,
+          "nationality": "ESP",
+          "customer_since": "2022-03-15",
+          "tenure_years": 2.9
+        },
+        "kyc_status": {
+          "verification_level": "FULL_EDD",
+          "pep_status": "NATIONAL",
+          "pep_position": "Consejero de Hacienda - Comunidad Autónoma",
+          "sanctions_status": "CLEAR",
+          "edd_required": true,
+          "next_review_due": "2025-03-15"
+        },
+        "risk_profile": {
+          "current_score": 68,
+          "category": "HIGH",
+          "factors": [
+            "PEP Nacional activo",
+            "Operativa internacional frecuente",
+            "Alto patrimonio declarado"
+          ]
+        },
+        "behavioral_metrics": {
+          "comparison": {
+            "monthly_income": {"expected": 15000, "actual": 18500, "deviation_pct": 23.3},
+            "monthly_expenses": {"expected": 8000, "actual": 12000, "deviation_pct": 50}
+          },
+          "anomalies_detected": ["Incremento gastos internacionales +50%"],
+          "new_countries": ["CHE"]
+        },
+        "alert_history": {
+          "total_alerts": 3,
+          "open_alerts": 1,
+          "closed_false_positive": 2
+        }
+      },
+      "interpretation": "PEP con desviaciones en comportamiento esperado. Nuevo país (Suiza) en operativa. Requiere revisión EDD y justificación de incremento de gastos."
+    },
+    {
+      "case_id": "C360-003",
+      "description": "Cliente con anomalías de comportamiento",
+      "customer_id": "C-5678",
+      "profile": {
+        "identity": {
+          "full_name": "Carlos López Sánchez",
+          "age": 42,
+          "nationality": "ESP",
+          "customer_since": "2015-08-20",
+          "tenure_years": 9.4
+        },
+        "kyc_status": {
+          "verification_level": "FULL",
+          "pep_status": "NOT_PEP",
+          "last_kyc_review": "2023-08-01",
+          "documents_valid": true
+        },
+        "risk_profile": {
+          "current_score": 48,
+          "category": "MEDIUM",
+          "trend": "INCREASING",
+          "factors": [
+            "Cambio de patrón transaccional",
+            "Sector de alto riesgo (inmobiliario)"
+          ]
+        },
+        "behavioral_metrics": {
+          "comparison": {
+            "monthly_income": {"expected": 4500, "actual": 12000, "deviation_pct": 166.7, "status": "ANOMALY"},
+            "monthly_expenses": {"expected": 3000, "actual": 9500, "deviation_pct": 216.7, "status": "CRITICAL"},
+            "transaction_count": {"expected": 40, "actual": 85, "deviation_pct": 112.5, "status": "ANOMALY"}
+          },
+          "anomalies_detected": [
+            "Ingresos 166% sobre esperado",
+            "Nuevo flujo de transferencias entrantes de empresa",
+            "Múltiples transferencias a cuentas en MAR"
+          ],
+          "new_countries": ["MAR"],
+          "new_counterparties": 12
+        },
+        "alert_history": {
+          "total_alerts": 1,
+          "open_alerts": 1
+        }
+      },
+      "interpretation": "ATENCIÓN: Cambio drástico de comportamiento. Ingresos triplicados sin actualización de perfil. Nuevas transferencias a Marruecos. Requiere contacto con cliente y actualización KYC urgente."
+    },
+    {
+      "case_id": "C360-004",
+      "description": "Cliente con historial de alertas SAR",
+      "customer_id": "C-9999",
+      "profile": {
+        "identity": {
+          "full_name": "Miguel Ángel Torres Vega",
+          "age": 55,
+          "nationality": "ESP",
+          "customer_since": "2018-01-10",
+          "tenure_years": 7.0
+        },
+        "kyc_status": {
+          "verification_level": "FULL_EDD",
+          "pep_status": "NOT_PEP",
+          "edd_required": true,
+          "edd_reason": "Historial de alertas"
+        },
+        "risk_profile": {
+          "current_score": 72,
+          "category": "HIGH",
+          "factors": [
+            "SAR previo comunicado",
+            "Sector cash-intensive (hostelería)",
+            "Monitorización reforzada activa"
+          ]
+        },
+        "behavioral_metrics": {
+          "comparison": {
+            "monthly_income": {"expected": 8000, "actual": 7500, "deviation_pct": -6.25, "status": "NORMAL"},
+            "monthly_expenses": {"expected": 6000, "actual": 5800, "deviation_pct": -3.33, "status": "NORMAL"}
+          },
+          "anomalies_detected": []
+        },
+        "alert_history": {
+          "total_alerts": 5,
+          "open_alerts": 0,
+          "closed_false_positive": 3,
+          "closed_sar": 1,
+          "closed_no_action": 1,
+          "last_alert_date": "2024-06-15",
+          "sar_details": {
+            "sar_id": "SAR-2023-45678",
+            "filed_date": "2023-09-20",
+            "type": "Structuring - depósitos en efectivo"
+          }
+        },
+        "relationships": {
+          "suspicious_connections": 2,
+          "cluster_id": "CLUSTER-HOSP-01"
+        }
+      },
+      "interpretation": "Cliente con SAR previo por structuring. Actualmente en monitorización reforzada. Comportamiento reciente dentro de parámetros pero mantener vigilancia. Conexiones sospechosas en grafo requieren atención."
+    }
+  ]
+}

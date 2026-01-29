@@ -1,0 +1,60 @@
+{
+  "examples": [
+    {
+      "case_id": "PAT-001",
+      "pattern_type": "STRUCTURING",
+      "confidence": 0.87,
+      "customer_profile": {
+        "declared_income": 2200,
+        "employment": "EMPLOYED",
+        "sector": "Retail"
+      },
+      "detection": {
+        "transactions": [
+          {"date": "2025-01-15", "amount": 2900, "type": "CASH_DEPOSIT"},
+          {"date": "2025-01-17", "amount": 2850, "type": "CASH_DEPOSIT"},
+          {"date": "2025-01-19", "amount": 2950, "type": "CASH_DEPOSIT"},
+          {"date": "2025-01-21", "amount": 2800, "type": "CASH_DEPOSIT"}
+        ],
+        "total": 11500,
+        "average": 2875,
+        "threshold": 3000,
+        "proximity_to_threshold": "96%"
+      },
+      "analysis": "4 depósitos en efectivo en 6 días, todos entre 93-98% del umbral de 3000 EUR. Total 11,500 EUR inconsistente con ingresos declarados de 2,200 EUR."
+    },
+    {
+      "case_id": "PAT-002",
+      "pattern_type": "VELOCITY",
+      "confidence": 0.75,
+      "customer_profile": {
+        "tenure_years": 7,
+        "average_monthly_activity": 4500
+      },
+      "detection": {
+        "baseline_monthly": 4500,
+        "current_monthly": 18500,
+        "deviation": "+311%",
+        "trigger": "DORMANT_REACTIVATION",
+        "dormancy_days": 210
+      },
+      "analysis": "Cuenta sin actividad por 7 meses. Reactivación con volumen 4x superior al histórico. Requiere verificación de cambio de circunstancias."
+    },
+    {
+      "case_id": "PAT-003",
+      "pattern_type": "GEOGRAPHIC",
+      "confidence": 0.68,
+      "customer_profile": {
+        "residence": "ESP",
+        "expected_countries": ["ESP", "FRA", "PRT"]
+      },
+      "detection": {
+        "new_countries": ["MAR", "TUR"],
+        "transactions_to_new": 5,
+        "amount_to_new": 12500,
+        "risk_level_new": "MEDIUM"
+      },
+      "analysis": "Nueva operativa con Marruecos y Turquía no declarada en perfil. 5 transferencias por 12,500 EUR. Países en lista de atención UE."
+    }
+  ]
+}

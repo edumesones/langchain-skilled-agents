@@ -1,0 +1,39 @@
+{
+  "examples": [
+    {
+      "case_id": "HIST-001",
+      "customer_id": "C-4821",
+      "analysis": {
+        "total_alerts": 5,
+        "period_years": 4,
+        "outcomes": {"CLOSED_FP": 3, "SAR_FILED": 1, "CLOSED_NO_ACTION": 1},
+        "recurrence_score": 3.5,
+        "risk_classification": "ALTO RIESGO REINCIDENCIA"
+      },
+      "timeline": [
+        {"date": "2021-03-15", "type": "VELOCITY", "outcome": "CLOSED_FP", "notes": "Cambio de empleo documentado"},
+        {"date": "2022-01-20", "type": "STRUCTURING", "outcome": "CLOSED_FP", "notes": "Negocio hostelería"},
+        {"date": "2022-08-10", "type": "STRUCTURING", "outcome": "SAR_FILED", "notes": "Patrón no justificado"},
+        {"date": "2023-06-05", "type": "GEOGRAPHIC", "outcome": "CLOSED_NO_ACTION", "notes": "Viaje documentado"},
+        {"date": "2024-11-20", "type": "STRUCTURING", "outcome": "PENDING", "notes": "Alerta actual"}
+      ],
+      "interpretation": "Cliente con SAR previo por structuring en 2022. Nueva alerta del mismo tipo requiere escrutinio máximo. Patrón recurrente a pesar de comunicación previa."
+    },
+    {
+      "case_id": "HIST-002",
+      "customer_id": "C-1234",
+      "analysis": {
+        "total_alerts": 2,
+        "period_years": 6,
+        "outcomes": {"CLOSED_FP": 2},
+        "recurrence_score": 0.5,
+        "risk_classification": "RIESGO BAJO"
+      },
+      "timeline": [
+        {"date": "2019-05-10", "type": "UNUSUAL_ACTIVITY", "outcome": "CLOSED_FP", "notes": "Herencia documentada"},
+        {"date": "2023-11-15", "type": "VELOCITY", "outcome": "CLOSED_FP", "notes": "Venta de vehículo documentada"}
+      ],
+      "interpretation": "Alertas históricas todas explicadas por eventos vitales documentados. Bajo riesgo de reincidencia. Tratamiento estándar apropiado."
+    }
+  ]
+}

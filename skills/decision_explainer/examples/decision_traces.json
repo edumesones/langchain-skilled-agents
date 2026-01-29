@@ -1,0 +1,89 @@
+{
+  "examples": [
+    {
+      "case_id": "DEC-001",
+      "decision": "CLOSED_FP",
+      "alert_type": "STRUCTURING",
+      "structured_rationale": {
+        "summary": "Falso positivo - depósitos corresponden a ingresos de negocio de hostelería",
+        "key_factors": [
+          "Cliente opera bar con alta facturación en efectivo",
+          "Montos consistentes con ventas reportadas en TPV",
+          "Actividad similar en años anteriores sin alertas",
+          "Documentación contable verificada"
+        ],
+        "evidence_reviewed": [
+          "Perfil KYC actualizado 2024-06",
+          "Extracto de movimientos 90 días",
+          "Declaración trimestral IVA",
+          "Registro de caja del establecimiento"
+        ],
+        "alternatives_considered": [
+          {
+            "decision": "SAR_FILED",
+            "rejected_because": "Actividad es consistente con negocio declarado y documentado"
+          },
+          {
+            "decision": "ESCALATED",
+            "rejected_because": "Evidencia es concluyente, no requiere análisis adicional"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "DEC-002",
+      "decision": "SAR_FILED",
+      "alert_type": "PEP",
+      "structured_rationale": {
+        "summary": "Comunicación por indicio - PEP con transferencias internacionales injustificadas",
+        "key_factors": [
+          "Cliente es PEP Nacional (concejal)",
+          "Transferencias a Suiza por 180K EUR",
+          "Sin documentación de soporte proporcionada",
+          "Beneficiario es sociedad opaca"
+        ],
+        "evidence_reviewed": [
+          "Verificación PEP en World-Check",
+          "Detalle de 3 transferencias internacionales",
+          "Correspondencia solicitando justificación",
+          "Análisis de titularidad de beneficiario"
+        ],
+        "regulatory_basis": [
+          "Art. 14 Ley 10/2010 - PEP",
+          "Art. 18 Ley 10/2010 - Comunicación por indicio",
+          "Art. 11 - EDD requerida no satisfecha"
+        ],
+        "alternatives_considered": [
+          {
+            "decision": "CLOSED_NO_ACTION",
+            "rejected_because": "Ausencia de justificación constituye indicio por sí misma en contexto PEP"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "DEC-003",
+      "decision": "ESCALATED",
+      "alert_type": "UNUSUAL_ACTIVITY",
+      "structured_rationale": {
+        "summary": "Escalado a L2 - caso complejo requiere análisis de red de relaciones",
+        "key_factors": [
+          "Cliente conectado con otros 5 clientes alertados",
+          "Patrón de transferencias sugiere coordinación",
+          "Se requiere análisis de grafo completo",
+          "Posible caso de red organizada"
+        ],
+        "questions_for_l2": [
+          "¿Existe relación declarada entre los 6 clientes?",
+          "¿Se debe consolidar en un único caso?",
+          "¿Se requiere bloqueo preventivo?"
+        ],
+        "evidence_attached": [
+          "Grafo preliminar de relaciones",
+          "Lista de alertas relacionadas",
+          "Resumen de flujos entre cuentas"
+        ]
+      }
+    }
+  ]
+}

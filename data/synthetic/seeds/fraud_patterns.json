@@ -1,0 +1,249 @@
+{
+  "patterns": [
+    {
+      "id": "STRUCT_001",
+      "name": "Cash Structuring",
+      "typology": "STRUCTURING",
+      "description": "Multiple cash deposits just below reporting threshold",
+      "indicators": [
+        "Multiple cash deposits within 24-48 hours",
+        "Individual amounts between 2,500-2,999 EUR",
+        "Cumulative amount exceeds 10,000 EUR",
+        "Different branches or ATMs used",
+        "Deposits made by same person or related parties"
+      ],
+      "risk_score_base": 70,
+      "detection_rules": {
+        "threshold_amount": 3000,
+        "threshold_percentage": 0.85,
+        "time_window_hours": 48,
+        "min_transactions": 3
+      }
+    },
+    {
+      "id": "STRUCT_002",
+      "name": "Transfer Structuring",
+      "typology": "STRUCTURING",
+      "description": "Breaking up transfers to avoid reporting requirements",
+      "indicators": [
+        "Multiple transfers to same beneficiary",
+        "Amounts consistently below 10,000 EUR",
+        "Short time intervals between transfers",
+        "No apparent business purpose"
+      ],
+      "risk_score_base": 65,
+      "detection_rules": {
+        "threshold_amount": 10000,
+        "threshold_percentage": 0.90,
+        "time_window_hours": 72,
+        "min_transactions": 2
+      }
+    },
+    {
+      "id": "LAYER_001",
+      "name": "Layering - Rapid Movement",
+      "typology": "LAYERING",
+      "description": "Rapid movement of funds through multiple accounts",
+      "indicators": [
+        "Funds received and immediately transferred",
+        "Multiple intermediate accounts used",
+        "Different jurisdictions involved",
+        "No economic purpose apparent",
+        "Round amounts"
+      ],
+      "risk_score_base": 80,
+      "detection_rules": {
+        "max_hold_time_hours": 24,
+        "min_accounts": 3,
+        "round_amount_tolerance": 100
+      }
+    },
+    {
+      "id": "LAYER_002",
+      "name": "Circular Transactions",
+      "typology": "LAYERING",
+      "description": "Funds returning to originator through intermediate parties",
+      "indicators": [
+        "Funds return to original source",
+        "Multiple intermediaries involved",
+        "Similar amounts with small variations",
+        "No business relationship between parties"
+      ],
+      "risk_score_base": 85,
+      "detection_rules": {
+        "max_cycle_days": 30,
+        "amount_tolerance_percent": 5
+      }
+    },
+    {
+      "id": "SMURF_001",
+      "name": "Smurfing Network",
+      "typology": "SMURFING",
+      "description": "Multiple individuals making deposits for same beneficiary",
+      "indicators": [
+        "Multiple unrelated depositors",
+        "Same ultimate beneficiary",
+        "Coordinated timing",
+        "Similar deposit amounts",
+        "Cash deposits predominant"
+      ],
+      "risk_score_base": 75,
+      "detection_rules": {
+        "min_depositors": 3,
+        "time_window_days": 7,
+        "amount_similarity_threshold": 0.20
+      }
+    },
+    {
+      "id": "SHELL_001",
+      "name": "Shell Company Activity",
+      "typology": "SHELL_COMPANY",
+      "description": "Company with no apparent business purpose",
+      "indicators": [
+        "High volume with no employees",
+        "Registered address is virtual office",
+        "Recent incorporation",
+        "Complex ownership structure",
+        "Transactions inconsistent with stated business"
+      ],
+      "risk_score_base": 70,
+      "detection_rules": {
+        "min_monthly_volume": 50000,
+        "max_company_age_months": 24
+      }
+    },
+    {
+      "id": "GEO_001",
+      "name": "High-Risk Geographic Pattern",
+      "typology": "GEOGRAPHIC",
+      "description": "Transactions involving high-risk jurisdictions",
+      "indicators": [
+        "Transfers to/from sanctioned countries",
+        "Transit through offshore centers",
+        "Inconsistent with customer profile",
+        "No business relationship in region"
+      ],
+      "risk_score_base": 75,
+      "detection_rules": {
+        "high_risk_country_list": ["IRN", "PRK", "SYR", "RUS", "VEN"]
+      }
+    },
+    {
+      "id": "VELOC_001",
+      "name": "Velocity Anomaly",
+      "typology": "VELOCITY",
+      "description": "Unusual spike in transaction frequency",
+      "indicators": [
+        "Transaction count exceeds historical average",
+        "Sudden change in behavior pattern",
+        "Multiple transactions in short period",
+        "Different from peer group"
+      ],
+      "risk_score_base": 55,
+      "detection_rules": {
+        "std_deviation_threshold": 3,
+        "comparison_period_days": 90,
+        "min_spike_factor": 5
+      }
+    },
+    {
+      "id": "VELOC_002",
+      "name": "Dormant Account Reactivation",
+      "typology": "VELOCITY",
+      "description": "Previously inactive account suddenly active",
+      "indicators": [
+        "No activity for extended period",
+        "Large transaction after dormancy",
+        "Rapid subsequent transactions",
+        "Different transaction pattern than before"
+      ],
+      "risk_score_base": 60,
+      "detection_rules": {
+        "dormancy_period_days": 180,
+        "reactivation_amount_threshold": 5000
+      }
+    },
+    {
+      "id": "BEHAV_001",
+      "name": "Income Mismatch",
+      "typology": "UNUSUAL_ACTIVITY",
+      "description": "Transaction volumes inconsistent with declared income",
+      "indicators": [
+        "Monthly credits exceed declared income",
+        "Lifestyle indicators mismatch",
+        "No explained source of funds",
+        "Gradual increase in transaction values"
+      ],
+      "risk_score_base": 50,
+      "detection_rules": {
+        "income_multiple_threshold": 2,
+        "evaluation_period_months": 3
+      }
+    },
+    {
+      "id": "PEP_001",
+      "name": "PEP High Value Transaction",
+      "typology": "PEP",
+      "description": "Large transaction involving politically exposed person",
+      "indicators": [
+        "Customer is PEP or PEP associate",
+        "Transaction exceeds normal threshold",
+        "International component",
+        "No clear business purpose"
+      ],
+      "risk_score_base": 65,
+      "detection_rules": {
+        "pep_transaction_threshold": 10000,
+        "requires_enhanced_monitoring": true
+      }
+    },
+    {
+      "id": "SANCT_001",
+      "name": "Sanctions Screening Match",
+      "typology": "SANCTIONS",
+      "description": "Potential match against sanctions lists",
+      "indicators": [
+        "Name match on sanctions list",
+        "Address match on sanctions list",
+        "Transaction with sanctioned entity",
+        "Country sanctions exposure"
+      ],
+      "risk_score_base": 90,
+      "detection_rules": {
+        "match_threshold": 0.85,
+        "lists": ["UN", "EU", "OFAC", "UK_HMT"]
+      }
+    }
+  ],
+  "rule_combinations": {
+    "high_priority": [
+      {
+        "rules": ["SANCT_001"],
+        "combined_score": 95,
+        "action": "IMMEDIATE_BLOCK"
+      },
+      {
+        "rules": ["LAYER_001", "GEO_001"],
+        "combined_score": 90,
+        "action": "URGENT_REVIEW"
+      },
+      {
+        "rules": ["STRUCT_001", "SMURF_001"],
+        "combined_score": 85,
+        "action": "URGENT_REVIEW"
+      }
+    ],
+    "medium_priority": [
+      {
+        "rules": ["VELOC_001", "BEHAV_001"],
+        "combined_score": 70,
+        "action": "STANDARD_REVIEW"
+      },
+      {
+        "rules": ["PEP_001", "GEO_001"],
+        "combined_score": 75,
+        "action": "ENHANCED_REVIEW"
+      }
+    ]
+  }
+}

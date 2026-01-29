@@ -1,0 +1,153 @@
+{
+  "categories": [
+    {
+      "mcc": "5411",
+      "name": "Grocery Stores, Supermarkets",
+      "risk_level": "low",
+      "examples": ["Mercadona", "Carrefour", "Lidl", "Aldi", "Dia", "Eroski"]
+    },
+    {
+      "mcc": "5812",
+      "name": "Eating Places and Restaurants",
+      "risk_level": "low",
+      "examples": ["Telepizza", "Goiko", "VIPS", "Foster's Hollywood", "100 Montaditos"]
+    },
+    {
+      "mcc": "5814",
+      "name": "Fast Food Restaurants",
+      "risk_level": "low",
+      "examples": ["McDonald's", "Burger King", "KFC", "Subway", "Domino's Pizza"]
+    },
+    {
+      "mcc": "5541",
+      "name": "Service Stations",
+      "risk_level": "low",
+      "examples": ["Repsol", "Cepsa", "BP", "Shell", "Galp"]
+    },
+    {
+      "mcc": "5311",
+      "name": "Department Stores",
+      "risk_level": "low",
+      "examples": ["El Corte Inglés", "Primark", "Zara", "H&M", "Mango"]
+    },
+    {
+      "mcc": "5912",
+      "name": "Drug Stores and Pharmacies",
+      "risk_level": "low",
+      "examples": ["Farmacia", "PromoFarma", "Dosfarma"]
+    },
+    {
+      "mcc": "4111",
+      "name": "Local and Suburban Commuter Transport",
+      "risk_level": "low",
+      "examples": ["Metro Madrid", "TMB Barcelona", "Renfe", "Cercanías"]
+    },
+    {
+      "mcc": "5732",
+      "name": "Electronics Stores",
+      "risk_level": "low",
+      "examples": ["MediaMarkt", "FNAC", "PC Componentes", "Apple Store"]
+    },
+    {
+      "mcc": "5691",
+      "name": "Men's and Women's Clothing Stores",
+      "risk_level": "low",
+      "examples": ["Zara", "Mango", "Massimo Dutti", "Bershka", "Pull&Bear"]
+    },
+    {
+      "mcc": "5977",
+      "name": "Cosmetic Stores",
+      "risk_level": "low",
+      "examples": ["Sephora", "Primor", "Douglas", "Druni"]
+    },
+    {
+      "mcc": "5999",
+      "name": "Miscellaneous and Specialty Retail Stores",
+      "risk_level": "medium",
+      "examples": ["Amazon", "AliExpress", "Wish"]
+    },
+    {
+      "mcc": "6011",
+      "name": "Financial Institutions - Automated Cash",
+      "risk_level": "medium",
+      "examples": ["ATM Withdrawal"]
+    },
+    {
+      "mcc": "6012",
+      "name": "Financial Institutions",
+      "risk_level": "medium",
+      "examples": ["BBVA", "Santander", "CaixaBank", "Sabadell"]
+    },
+    {
+      "mcc": "5813",
+      "name": "Drinking Places - Bars, Taverns, Nightclubs",
+      "risk_level": "medium",
+      "examples": ["Bar", "Pub", "Discoteca"]
+    },
+    {
+      "mcc": "7995",
+      "name": "Betting and Casino Gambling",
+      "risk_level": "high",
+      "examples": ["Bet365", "Codere", "Sportium", "William Hill", "Casino Gran Madrid"]
+    },
+    {
+      "mcc": "5944",
+      "name": "Jewelry Stores, Watches, Clocks",
+      "risk_level": "high",
+      "examples": ["Tous", "Joyería", "Pandora", "Swarovski"]
+    },
+    {
+      "mcc": "5094",
+      "name": "Precious Stones and Metals",
+      "risk_level": "high",
+      "examples": ["Compro Oro", "Gold & Silver"]
+    },
+    {
+      "mcc": "6051",
+      "name": "Non-Financial Institutions - Cryptocurrency",
+      "risk_level": "high",
+      "examples": ["Binance", "Coinbase", "Kraken", "Bit2Me"]
+    },
+    {
+      "mcc": "4829",
+      "name": "Money Transfer",
+      "risk_level": "high",
+      "examples": ["Western Union", "MoneyGram", "Ria", "TransferWise"]
+    },
+    {
+      "mcc": "6538",
+      "name": "Money Transfer - Merchants",
+      "risk_level": "high",
+      "examples": ["Remittance Services", "Forex Exchange"]
+    },
+    {
+      "mcc": "5960",
+      "name": "Direct Marketing - Insurance Services",
+      "risk_level": "medium",
+      "examples": ["Seguros Online", "Comparadores"]
+    },
+    {
+      "mcc": "7801",
+      "name": "Government-Owned Lotteries",
+      "risk_level": "medium",
+      "examples": ["Loterías y Apuestas del Estado", "ONCE", "La Primitiva"]
+    }
+  ],
+  "risk_thresholds": {
+    "low": {
+      "single_transaction_alert": 10000,
+      "daily_cumulative_alert": 15000,
+      "monthly_cumulative_alert": 50000
+    },
+    "medium": {
+      "single_transaction_alert": 5000,
+      "daily_cumulative_alert": 10000,
+      "monthly_cumulative_alert": 30000
+    },
+    "high": {
+      "single_transaction_alert": 1000,
+      "daily_cumulative_alert": 3000,
+      "monthly_cumulative_alert": 10000
+    }
+  }
+}
